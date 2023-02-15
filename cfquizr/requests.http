@@ -1,0 +1,302 @@
+#@host={{host}}
+@host=https://cfquizr.rstropek.com
+
+###
+GET https://api.airtable.com/v0/bases/appVVpjXKlanvxr51/webhooks/
+Authorization: Bearer patvJJujhDxGkfiuM.cfe25bb396f8b5c86a2115b80170197690300399b40d7bd0337504c4d6ec145d
+
+###
+GET {{host}}/hooks
+
+###
+POST {{host}}/hooks
+
+###
+DELETE {{host}}/hooks
+
+###
+GET {{host}}/quizzes/cities
+
+###
+GET {{host}}/quizzes/cities/London
+
+###
+GET {{host}}/quizzes/1
+
+###
+POST {{host}}/quiz-hook
+Content-Type: application/json
+
+{
+    "asdf": "asdf"
+}
+
+###
+POST {{host}}/quiz-hook
+Content-Type: application/json
+
+{
+    "payloads": [
+        {
+            "timestamp": "2023-02-15T06:18:33.019Z",
+            "baseTransactionNumber": 90,
+            "actionMetadata": {
+                "source": "client",
+                "sourceMetadata": {
+                    "user": {
+                        "id": "usrcu7oEckzqz4hve",
+                        "email": "rainer@software-architects.at",
+                        "permissionLevel": "create",
+                        "name": "Rainer Stropek",
+                        "profilePicUrl": "https://static.airtable.com/images/userIcons/user_icon_6.png"
+                    }
+                }
+            },
+            "payloadFormat": "v0",
+            "changedTablesById": {
+                "tblAW8DJQWgiYrVhD": {
+                    "changedRecordsById": {
+                        "recyNuW0VL8kHvEIx": {
+                            "current": {
+                                "cellValuesByFieldId": {
+                                    "fldvdsaSznoVNxUG4": "Vienna"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "timestamp": "2023-02-15T06:18:36.055Z",
+            "baseTransactionNumber": 91,
+            "actionMetadata": {
+                "source": "client",
+                "sourceMetadata": {
+                    "user": {
+                        "id": "usrcu7oEckzqz4hve",
+                        "email": "rainer@software-architects.at",
+                        "permissionLevel": "create",
+                        "name": "Rainer Stropek",
+                        "profilePicUrl": "https://static.airtable.com/images/userIcons/user_icon_6.png"
+                    }
+                }
+            },
+            "payloadFormat": "v0",
+            "changedTablesById": {
+                "tblAW8DJQWgiYrVhD": {
+                    "changedRecordsById": {
+                        "recyNuW0VL8kHvEIx": {
+                            "current": {
+                                "cellValuesByFieldId": {
+                                    "fldvdsaSznoVNxUG4": "Vienna3"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "timestamp": "2023-02-15T06:18:45.346Z",
+            "baseTransactionNumber": 92,
+            "actionMetadata": {
+                "source": "client",
+                "sourceMetadata": {
+                    "user": {
+                        "id": "usrcu7oEckzqz4hve",
+                        "email": "rainer@software-architects.at",
+                        "permissionLevel": "create",
+                        "name": "Rainer Stropek",
+                        "profilePicUrl": "https://static.airtable.com/images/userIcons/user_icon_6.png"
+                    }
+                }
+            },
+            "payloadFormat": "v0",
+            "changedTablesById": {
+                "tblAW8DJQWgiYrVhD": {
+                    "createdRecordsById": {
+                        "recfNLvpjvoSiGdG6": {
+                            "createdTime": "2023-02-15T06:18:45.000Z",
+                            "cellValuesByFieldId": {}
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "timestamp": "2023-02-15T06:20:57.755Z",
+            "baseTransactionNumber": 93,
+            "actionMetadata": {
+                "source": "client",
+                "sourceMetadata": {
+                    "user": {
+                        "id": "usrcu7oEckzqz4hve",
+                        "email": "rainer@software-architects.at",
+                        "permissionLevel": "create",
+                        "name": "Rainer Stropek",
+                        "profilePicUrl": "https://static.airtable.com/images/userIcons/user_icon_6.png"
+                    }
+                }
+            },
+            "payloadFormat": "v0",
+            "changedTablesById": {
+                "tblAW8DJQWgiYrVhD": {
+                    "destroyedRecordIds": [
+                        "recfNLvpjvoSiGdG6"
+                    ]
+                }
+            }
+        },
+        {
+            "timestamp": "2023-02-15T06:21:04.250Z",
+            "baseTransactionNumber": 94,
+            "actionMetadata": {
+                "source": "client",
+                "sourceMetadata": {
+                    "user": {
+                        "id": "usrcu7oEckzqz4hve",
+                        "email": "rainer@software-architects.at",
+                        "permissionLevel": "create",
+                        "name": "Rainer Stropek",
+                        "profilePicUrl": "https://static.airtable.com/images/userIcons/user_icon_6.png"
+                    }
+                }
+            },
+            "payloadFormat": "v0",
+            "changedTablesById": {
+                "tblAW8DJQWgiYrVhD": {
+                    "createdRecordsById": {
+                        "recw5r8FXV7ScNF1e": {
+                            "createdTime": "2023-02-15T06:21:04.000Z",
+                            "cellValuesByFieldId": {}
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "timestamp": "2023-02-15T06:21:06.044Z",
+            "baseTransactionNumber": 95,
+            "actionMetadata": {
+                "source": "client",
+                "sourceMetadata": {
+                    "user": {
+                        "id": "usrcu7oEckzqz4hve",
+                        "email": "rainer@software-architects.at",
+                        "permissionLevel": "create",
+                        "name": "Rainer Stropek",
+                        "profilePicUrl": "https://static.airtable.com/images/userIcons/user_icon_6.png"
+                    }
+                }
+            },
+            "payloadFormat": "v0",
+            "changedTablesById": {
+                "tblAW8DJQWgiYrVhD": {
+                    "changedRecordsById": {
+                        "recw5r8FXV7ScNF1e": {
+                            "current": {
+                                "cellValuesByFieldId": {
+                                    "fldvdsaSznoVNxUG4": "L"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "timestamp": "2023-02-15T06:21:09.052Z",
+            "baseTransactionNumber": 96,
+            "actionMetadata": {
+                "source": "client",
+                "sourceMetadata": {
+                    "user": {
+                        "id": "usrcu7oEckzqz4hve",
+                        "email": "rainer@software-architects.at",
+                        "permissionLevel": "create",
+                        "name": "Rainer Stropek",
+                        "profilePicUrl": "https://static.airtable.com/images/userIcons/user_icon_6.png"
+                    }
+                }
+            },
+            "payloadFormat": "v0",
+            "changedTablesById": {
+                "tblAW8DJQWgiYrVhD": {
+                    "changedRecordsById": {
+                        "recw5r8FXV7ScNF1e": {
+                            "current": {
+                                "cellValuesByFieldId": {
+                                    "fldvdsaSznoVNxUG4": "Lo"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "timestamp": "2023-02-15T06:21:12.040Z",
+            "baseTransactionNumber": 97,
+            "actionMetadata": {
+                "source": "client",
+                "sourceMetadata": {
+                    "user": {
+                        "id": "usrcu7oEckzqz4hve",
+                        "email": "rainer@software-architects.at",
+                        "permissionLevel": "create",
+                        "name": "Rainer Stropek",
+                        "profilePicUrl": "https://static.airtable.com/images/userIcons/user_icon_6.png"
+                    }
+                }
+            },
+            "payloadFormat": "v0",
+            "changedTablesById": {
+                "tblAW8DJQWgiYrVhD": {
+                    "changedRecordsById": {
+                        "recw5r8FXV7ScNF1e": {
+                            "current": {
+                                "cellValuesByFieldId": {
+                                    "fldvdsaSznoVNxUG4": "London"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "timestamp": "2023-02-15T06:21:12.314Z",
+            "baseTransactionNumber": 98,
+            "actionMetadata": {
+                "source": "client",
+                "sourceMetadata": {
+                    "user": {
+                        "id": "usrcu7oEckzqz4hve",
+                        "email": "rainer@software-architects.at",
+                        "permissionLevel": "create",
+                        "name": "Rainer Stropek",
+                        "profilePicUrl": "https://static.airtable.com/images/userIcons/user_icon_6.png"
+                    }
+                }
+            },
+            "payloadFormat": "v0",
+            "changedTablesById": {
+                "tblAW8DJQWgiYrVhD": {
+                    "changedRecordsById": {
+                        "recw5r8FXV7ScNF1e": {
+                            "current": {
+                                "cellValuesByFieldId": {
+                                    "flddXG9eww7oEiAFS": "asdf"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "cursor": 10,
+    "mightHaveMore": false,
+    "payloadFormat": "v0"
+}

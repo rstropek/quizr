@@ -1,0 +1,16 @@
+name = "cfquizr"
+main = "src/index.ts"
+compatibility_date = "2023-02-14"
+
+kv_namespaces = [
+  { binding = "QUIZKV", id = "27f1561d2fff4cbb8fbedf20148db5ef", preview_id = "27f1561d2fff4cbb8fbedf20148db5ef" }
+]
+
+[vars]
+AIRTABLE_BASE = "appVVpjXKlanvxr51"
+AIRTABLE_TABLE = "tblAW8DJQWgiYrVhD"
+AIRTABLE_SYNC_COL = "fld84Kkt3mvH1h3VW"
+WEBHOOK_URL = "https://cfquizr.rstropek.com/quiz-hook"
+
+# The necessary secrets are:
+# - AIRTABLE_PAT
