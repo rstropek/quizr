@@ -3,7 +3,7 @@ import { IRequest } from "itty-router";
 import { status, ThrowableRouter } from "itty-router-extras";
 import { getWebhookList, createWebhook, deleteWebhook } from "./airtable";
 import { Env } from "./env";
-import { airtableWebhookHandler, getQuizByCityName, getQuizCityNames } from "./quizzes";
+import { airtableWebhookHandler, getQuestionById, getQuizByCityName, getQuizCityNames, getQuizQuestionIdsByCityName } from "./quizzes";
 
 const router = ThrowableRouter();
 
@@ -14,6 +14,8 @@ router
   .delete("/hooks", async (_, env: Env) => await deleteWebhook(env))
   .get("/quizzes/cities", async (request: IRequest, env: Env) => await getQuizCityNames(request, env))
   .get("/quizzes/cities/:city", async (request: IRequest, env: Env) => await getQuizByCityName(request, request.params.city, env))
+  .get("/quizzes/cities/:city/questions", async (request: IRequest, env: Env) => await getQuizQuestionIdsByCityName(request, request.params.city, env))
+  .get("/quizzes/cities/:city/questions/:id", async (request: IRequest, env: Env) => await getQuestionById(request, request.params.city, request.params.id, env))
   .all("*", () => status(StatusCodes.NOT_FOUND));
 
 export default {

@@ -5,6 +5,7 @@ export type AirtableRecord<T> = {
 };
 
 export type Quiz = {
+  id?: string;
   city: string;
   question: string;
   answer1: string;
@@ -14,6 +15,11 @@ export type Quiz = {
   correctAnswer: string;
   sync: boolean;
 };
+
+export type QuizReference = {
+  id: string;
+  url: string;
+}
 
 export type AirtableWebhook = {
   base: { id: string };

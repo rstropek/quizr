@@ -1,9 +1,9 @@
-#@host={{host}}
+#@host=http://localhost:8787
 @host=https://cfquizr.rstropek.com
 
 ###
 GET https://api.airtable.com/v0/bases/appVVpjXKlanvxr51/webhooks/
-Authorization: Bearer patvJJujhDxGkfiuM.cfe25bb396f8b5c86a2115b80170197690300399b40d7bd0337504c4d6ec145d
+Authorization: Bearer patvJ...
 
 ###
 GET {{host}}/hooks
@@ -18,7 +18,13 @@ DELETE {{host}}/hooks
 GET {{host}}/quizzes/cities
 
 ###
-GET {{host}}/quizzes/cities/London
+GET {{host}}/quizzes/cities/Paris
+
+###
+GET {{host}}/quizzes/cities/Paris/questions
+
+###
+GET {{host}}/quizzes/cities/Paris/questions/recZ68DCDzSL7eHbY
 
 ###
 GET {{host}}/quizzes/1

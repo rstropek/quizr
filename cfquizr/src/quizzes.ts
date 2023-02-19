@@ -19,6 +19,8 @@ export async function airtableWebhookHandler(request: IRequest, env: Env): Promi
       continue;
     }
 
+    quiz.fields.id = quiz.id;
+
     env.QUIZKV.put(`city:${quiz.fields.city}`, "");
     env.QUIZKV.put(`question:${quiz.fields.city}:${quiz.id}`, JSON.stringify(quiz.fields));
 
@@ -71,5 +73,32 @@ export async function getQuizByCityName(request: IRequest, city: string, env: En
     }
 
     return json(result);
+  });
+}
+
+export async function getQuizQuestionIdsByCityName(request: IRequest, city: string, env: Env): Promise<Response> {
+  // Note that we do not cache the ouput of this API, as it is used to generate a quiz
+  // and we want to ensure that the order of the questions are always random.
+
+  const questions = await env.QUIZKV.list({ prefix: `question:${city}` });
+  const questionIds = questions.keys.map((k) => k.name.replace(`question:${city}:`, ""));
+
+  // Sort questionIDs randomly
+  for (let i = questionIds.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [questionIds[i], questionIds[j]] = [questionIds[j], questionIds[i]];
+  }
+
+  return json(questionIds.map(id => ({ id, url: `${request.url}${request.url.endsWith('/') ? "" : "/"}${id}`})));
+}
+
+export async function getQuestionById(request: IRequest, city: string, id: string, env: Env): Promise<Response> {
+  return await cache(request, async () => {
+    const quiz = await env.QUIZKV.get<Quiz>(`question:${city}:${id}`, "json");
+    if (quiz === null) {
+      return status(StatusCodes.NOT_FOUND, `Question ${id} not found for city ${city}`);
+    }
+
+    return json(quiz);
   });
 }
