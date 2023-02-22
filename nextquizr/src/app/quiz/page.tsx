@@ -1,20 +1,26 @@
 import Question from "../question/page";
 
-type QuizReference = {
-  id: string;
-  url: string;
-}
+export type Quiz = {
+  id?: string;
+  city: string;
+  question: string;
+  answer1: string;
+  answer2: string;
+  answer3: string;
+  answer4: string;
+  correctAnswer: string;
+  sync: boolean;
+};
 
 export default async function Home({searchParams}: { searchParams: { city: string }}) {
   const qResponse = await fetch(
-    `https://cfquizr.rstropek.com/quizzes/cities/${searchParams.city}/questions`
+    `https://cfquizr.rstropek.com/quizzes/cities/${searchParams.city}`
     );
-    const questions: QuizReference[] = (await qResponse.json());
+    const questions: Quiz[] = (await qResponse.json());
     return (
       <>
         <h1>{searchParams.city}</h1>
-        {/* @ts-expect-error Server Component */}
-        <Question city={searchParams.city} questionUrl={questions[0].url}></Question>
+        <Question questions={questions}></Question>
       </>
   );
 }

@@ -1,34 +1,52 @@
+'use client';
+
+import { Quiz } from "../quiz/page";
+import { useState } from 'react';
+
 type Props = {
-    city: string;
-    questionUrl: string;
+    questions: Quiz[];
 }
 
-type Quiz = {
-  id?: string;
+type Answers = {
   city: string;
-  question: string;
-  answer1: string;
-  answer2: string;
-  answer3: string;
-  answer4: string;
-  correctAnswer: string;
-  sync: boolean;
+  answers: {
+    questionId: string;
+    answer: string;
+  }[];
 };
 
-export default async function Question(data: Props) {
-  console.log(data);
-  const qResponse = await fetch(data.questionUrl);
-    const question: Quiz = (await qResponse.json());
+export default function Question(data: Props) {
+  const [currentQuestionId, setCurrentQuestionId] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(data.questions[0]);
+  const [answers, setAnswers] = useState<{
+    questionId: string;
+    answer: string;
+  }[]>([]);
+
+  function click(answer: string) {
+    const collectedAnswers = [...answers, { questionId: data.questions[currentQuestionId].id!, answer }];
+    setAnswers(collectedAnswers)
+    console.log(collectedAnswers);
+    if (currentQuestionId < data.questions.length - 1) {
+      const nextQuestion = currentQuestionId + 1;
+      setCurrentQuestionId(nextQuestion);
+      setCurrentQuestion(data.questions[nextQuestion]);
+    }
+  }
 
   return <>
+    <h2>{ data.questions[currentQuestionId].city }</h2>
+
+    <p>
+      { data.questions[currentQuestionId].question }
+    </p>
+
     <ul>
-      <li>{question.id}</li>
-      <li>{question.city}</li>
-      <li>{question.question}</li>
-      <li>{question.answer1}</li>
-      <li>{question.answer2}</li>
-      <li>{question.answer3}</li>
-      <li>{question.answer4}</li>
+      <li onClick={ () => click(data.questions[currentQuestionId].answer1) }>{ data.questions[currentQuestionId].answer1 }</li>
+      <li>{ data.questions[currentQuestionId].answer2 }</li>
+      <li>{ data.questions[currentQuestionId].answer3 }</li>
+      <li>{ data.questions[currentQuestionId].answer4 }</li>
     </ul>
   </>;
 }
+
