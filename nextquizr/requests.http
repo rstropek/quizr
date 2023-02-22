@@ -1,0 +1,16 @@
+POST http://localhost:3000/api/evaluateQuiz
+Content-Type: application/json
+
+{
+    "city": "Paris",
+    "answers": [
+        {
+            "questionId": "rec0MxN75UQtDQLuY",
+            "answer": "The Louvre"
+        }
+    ]
+}
+
+###
+GET https://cfquizr.rstropek.com/quizzes/cities/Paris
+

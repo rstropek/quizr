@@ -1,0 +1,34 @@
+.citySelection {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.citySelection .headerText {
+  margin-bottom: 25px;
+}
+
+.citySelection .startButton {
+  margin-top: 25px;
+  padding: 10px;
+  font-size: 36px;
+  border: 0;
+  background-color: #f1f1f1;
+}
+
+.citySelection .startButton:hover {
+  background-color: #d3d3d3;
+  font-size: 38px;
+  padding: 9px;
+}
+
+.citySelectionDropdown {
+    font-size: 36px;
+    padding: 15px;
+    border: 0
+}
