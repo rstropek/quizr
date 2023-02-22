@@ -18,7 +18,7 @@ DELETE {{host}}/hooks
 GET {{host}}/quizzes/cities
 
 ###
-GET {{host}}/quizzes/cities/Paris
+GET {{host}}/quizzes/cities/New York
 
 ###
 GET {{host}}/quizzes/cities/Paris/questions

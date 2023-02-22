@@ -12,7 +12,10 @@ export type Quiz = {
   sync: boolean;
 };
 
-export default async function Home({searchParams}: { searchParams: { city: string }}) {
+//export default async function Home({searchParams}: { searchParams: { city: string }}) {
+export default async function Home(props: any) {
+  const searchParams = props.searchParams;
+
   const qResponse = await fetch(
     `https://cfquizr.rstropek.com/quizzes/cities/${searchParams.city}`
     );

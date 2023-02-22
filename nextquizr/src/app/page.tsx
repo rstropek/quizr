@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./page.module.css";
+import SelectCity from "./selectCity/page";
 
 export default async function Home() {
   const citiesResponse = await fetch(
@@ -7,7 +8,8 @@ export default async function Home() {
   );
   const cities = (await citiesResponse.json()) as string[];
   return (
-    <form className={styles.citySelection} method="get" action="quiz">
+    <>
+    {/* <form className={styles.citySelection} method="get" action="quiz">
       <label htmlFor="city" className={styles.headerText}>Quiz about which city?</label>
       <select className={styles.citySelectionDropdown} name="city" id="city">
         {cities.map((c, ix) => (
@@ -15,6 +17,8 @@ export default async function Home() {
         ))}
       </select>
       <button type="submit" className={styles.startButton}>Start!</button>
-    </form>
+    </form> */}
+    <SelectCity cities={cities}></SelectCity>
+    </>
   );
 }

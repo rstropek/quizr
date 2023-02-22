@@ -4,7 +4,7 @@ import { Quiz } from "../quiz/page";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-type Props = {
+type PageProps = {
   questions: Quiz[];
 };
 
@@ -16,8 +16,15 @@ type Answers = {
   }[];
 };
 
-export default function Question(data: Props) {
+export default function Question({questions}: any) {
   const router = useRouter();
+
+  let data: PageProps = { questions: questions! };
+  // if (typeof props === "string") {
+  //   data = JSON.parse(props);
+  // } else {
+  //   data = props;
+  // }
 
   const [currentQuestionId, setCurrentQuestionId] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(data.questions[0]);
