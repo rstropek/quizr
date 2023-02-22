@@ -8,6 +8,7 @@ import { airtableWebhookHandler, getQuestionById, getQuizByCityName, getQuizCity
 const router = ThrowableRouter();
 
 router
+  .get("/loaderio-c13780efd66c7e8537feeb9ce8658d5c.txt", () => new Response("loaderio-c13780efd66c7e8537feeb9ce8658d5c"))
   .post("/quiz-hook", airtableWebhookHandler)
   .get("/hooks", async (_, env: Env) => await getWebhookList(env))
   .post("/hooks", async (_, env: Env) => await createWebhook(env))

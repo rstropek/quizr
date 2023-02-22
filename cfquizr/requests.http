@@ -38,6 +38,9 @@ Content-Type: application/json
 }
 
 ###
+GET {{host}}/loaderio-c13780efd66c7e8537feeb9ce8658d5c.txt
+
+###
 POST {{host}}/quiz-hook
 Content-Type: application/json
 
