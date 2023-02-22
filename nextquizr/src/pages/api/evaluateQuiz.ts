@@ -61,5 +61,5 @@ export default async function handler(req: NextRequest) {
     correctPercentage: Math.round((correctAnswers / quizzes.length) * 10000) / 100,
   };
 
-  return new Response(await aesGcmEncrypt(JSON.stringify(evaluation), process.env.ENCRYPTION_KEY!));
+  return new Response(JSON.stringify(await aesGcmEncrypt(JSON.stringify(evaluation), process.env.ENCRYPTION_KEY!)));
 }
