@@ -57,6 +57,9 @@ export async function getQuizCityNames(request: IRequest, env: Env): Promise<Res
 
 export async function getQuizByCityName(request: IRequest, city: string, env: Env): Promise<Response> {
   return await cache(request, async () => {
+    // Replace all %20 with spaces
+    city = city.replace(/%20/g, " ");
+
     const questions = await env.QUIZKV.list({ prefix: `question:${city}` });
     if (questions.keys.length === 0) {
       return status(StatusCodes.NOT_FOUND, `No quizzes found for city ${city}`);

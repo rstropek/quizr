@@ -1,0 +1,23 @@
+.answerOption li {
+  list-style-type: none;
+  background: #f1f1f1;
+  margin: 5px;
+  padding: 15px;
+}
+
+.answerOption li:hover {
+  background-color: #d3d3d3;
+}
+
+.answerOption {
+  padding: 0;
+  text-align: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". ."
+    ". .";
+}

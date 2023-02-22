@@ -1,27 +1,10 @@
 import { aesGcmEncrypt } from "@/crypto";
+import { Answers, Evaluation, Quiz } from "@/types";
 import type { NextRequest } from "next/server";
 
+// This is a server-side API that uses the edge runtime.
 export const config = {
   runtime: "edge",
-};
-
-export type Answers = {
-  city: string;
-  answers: {
-    questionId: string;
-    answer: string;
-  }[];
-};
-
-type Quiz = {
-  id?: string;
-  correctAnswer: string;
-};
-
-type Evaluation = {
-    correctAnswers: number;
-    city: string;
-    correctPercentage: number;
 };
 
 export default async function handler(req: NextRequest) {
@@ -29,6 +12,7 @@ export default async function handler(req: NextRequest) {
     return new Response("Method not allowed", { status: 405 });
   }
 
+  // Check the request body
   const answers: Answers = await req.json();
   if (answers === undefined || !answers.city || !Array.isArray(answers.answers)) {
     return new Response("Invalid request", { status: 400 });
@@ -40,26 +24,23 @@ export default async function handler(req: NextRequest) {
     return new Response("Invalid request", { status: 400 });
   }
 
+  // Fetch questions with correct answers
   const qResponse = await fetch(
-    `https://cfquizr.rstropek.com/quizzes/cities/${answers.city}`
+    `${process.env.SERVICE_BASE_URL!}/quizzes/cities/${answers.city}`
   );
   const quizzes: Quiz[] = await qResponse.json();
 
-  // count correct answers in answers.answers by comparing it with quizzes
+  // Count correct answers in answers.answers by comparing it with quizzes
   const correctAnswers = answers.answers.filter((answer) => {
-    const quiz = quizzes.find((q) => {
-      console.log(q.id, answer.questionId)
-      return q.id === answer.questionId
-    });
-    console.log(quizzes, answer);
+    const quiz = quizzes.find((q) => q.id === answer.questionId);
     return quiz && quiz.correctAnswer === answer.answer;
   }).length;
 
+  // Build, encrypt, and return evaluation result
   const evaluation: Evaluation = {
     correctAnswers,
     city: answers.city,
     correctPercentage: Math.round((correctAnswers / quizzes.length) * 10000) / 100,
   };
-
   return new Response(JSON.stringify(await aesGcmEncrypt(JSON.stringify(evaluation), process.env.ENCRYPTION_KEY!)));
 }
