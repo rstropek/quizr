@@ -1,0 +1,22 @@
+.backToStart {
+  color: #187818;
+  text-decoration: none;
+}
+
+.backToStart:hover {
+  text-decoration: none;
+  color: rgb(82, 237, 82);
+
+}
+
+.backToStart:link {
+  text-decoration: none;
+}
+
+.backToStart:visited {
+  text-decoration: none;
+}
+
+.backToStart:active {
+  text-decoration: none;
+}

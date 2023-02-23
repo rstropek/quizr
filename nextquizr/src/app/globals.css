@@ -1,6 +1,7 @@
 html {
-  background-color: #feffc7;
+  background-color: black;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
 }
 
 .centered {

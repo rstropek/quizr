@@ -1,6 +1,7 @@
 import { aesGcmDecrypt } from "@/crypto";
 import { Evaluation } from "@/types";
 import Link from "next/link";
+import styles from "./page.module.css"
 
 type Props = {
   res: string;
@@ -18,7 +19,7 @@ export default async function Result({ params }: { params: Props }) {
         {evaluation.correctPercentage}%!
       </p>
 
-      <Link href="/">Let me take another quiz...</Link>
+      <Link href="/" className={styles.backToStart}>Let me take another quiz&nbsp;...</Link>
     </>
   );
 }
